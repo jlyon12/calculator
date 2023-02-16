@@ -14,32 +14,42 @@
 </head>
 <body>
     <div id="page-wrapper" class="clr-bg-light">
+        <h1 id="title">Calc This!</h1>
         <div id="calculator-container" class="clr-bg-dark">
-            <div id="output" class="clr-bg-light">80085</div>
+            <div id="output" class="clr-bg-light"></div>
             <div id="inputs-container">
+                <div id="specials-container">
+                    <button class="special-btn" id="ac-btn" value="ac">AC</button>
+                    <button class="special-btn" id="percent-btn" value="%"></button>
+                    <button class="special-btn" id="polar-btn" value="-1"></button>
+                    
+                </div>
+                <div id="inputs-sub-container">
                 <div id="numbers-container">
-                    <button class="number-button" id="1">1</button>
-                    <button class="number-button" id="2">2</button>
-                    <button class="number-button" id="3">3</button>
-                    <button class="number-button" id="4">4</button>
-                    <button class="number-button" id="5">5</button>
-                    <button class="number-button" id="6">6</button>
-                    <button class="number-button" id="7">7</button>
-                    <button class="number-button" id="8">8</button>
-                    <button class="number-button" id="9">9</button>
-                    <button class="number-button" id="clear">C</button>
-                    <button class="number-button" id="0">0</button>
-                    <button class="number-button" id="decimal">.</button>
+                    <button class="number-btn" id="1-btn" value="1">1</button>
+                    <button class="number-btn" id="2-btn" value="2">2</button>
+                    <button class="number-btn" id="3-btn" value="3">3</button>
+                    <button class="number-btn" id="4-btn" value="4">4</button>
+                    <button class="number-btn" id="5-btn" value="5">5</button>
+                    <button class="number-btn" id="6-btn" value="6">6</button>
+                    <button class="number-btn" id="7-btn" value="7">7</button>
+                    <button class="number-btn" id="8-btn" value="8">8</button>
+                    <button class="number-btn" id="9-btn" value="9">9</button>
+                    <button class="number-btn" id="clear-btn" value="clear"></button>
+                    <button class="number-btn" id="0-btn" value="0">0</button>
+                    <button class="number-btn" id="decimal-btn" value=".">.</button>
                 </div>
                 <div id="operators-container">
-                    <button class="operator-button" id="add"> + </button>
-                    <button class="operator-button" id="subtract"> - </button>
-                    <button class="operator-button" id="multiply"> X </button>
-                    <button class="operator-button" id="divide"> % </button>
-                    <button class="operator-button" id="enter"> = </button>
+                    <button class="operator-btn" id="add-btn" value="+"> + </button>
+                    <button class="operator-btn" id="subtract-btn" value="-"> - </button>
+                    <button class="operator-btn" id="multiply-btn" value="*"> X </button>
+                    <button class="operator-btn" id="divide-btn" value="/"> / </button>
+                    <button class="operator-btn" id="enter-btn" value="="> = </button>
+                </div>
                 </div>
             </div>
         </div>
+        <footer><p>Created by <a href="https://github.com/probableactions">probableactions</a></p></footer>
     </div>
     
 </body>
