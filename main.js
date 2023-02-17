@@ -1,24 +1,18 @@
 const calcScreen = document.getElementById('output');
 const calcBtns = document.querySelectorAll('button');
-const numberBtns = document.querySelectorAll('.number-btn');
-const operatorBtns= document.querySelectorAll('.operator-btn');
-const clearBtn = document.getElementById('clear-btn');
-const enterBtn = document.getElementById('enter-btn');
-
-
+const decimalBtn = document.getElementById('decimal-btn');
 let inputSelection = [];
-
 let numberA = null;
 let numberB = null;
 let activeOperator = null;
-let lastResult = null;
+
 
 const add = (a,b) => a+b ;
 const subtract = (a,b) => a-b ;
 const multiply = (a,b) => a*b ;
 const divide = (a,b) => {
     if (a === 0 || b === 0 ) {
-        return 'ERROR';
+        return 'LOL, no.';
     }
     else if (a > 0 && b > 0) {
         return a / b ;
@@ -43,41 +37,52 @@ const operate = (numA,operator,numB) => {
 
 calcBtns.forEach(button => {
     button.addEventListener('click', (e) => {
+        
     if (e.target.className === 'number-btn' && e.target.id !== 'clear-btn' && numberA === null) {
         inputSelection.push(e.target.value);
         calcScreen.innerText = inputSelection.join('');
+        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }  
     else if (e.target.className === 'operator-btn' && e.target.id !== 'enter-btn' && activeOperator === null) {
         inputSelection.push(e.target.value);
-        calcScreen.innerText = e.target.value;
         activeOperator = inputSelection.pop();
         numberA = Number(inputSelection.splice(0,inputSelection.length).join(''));
+        calcScreen.innerText = numberA;
+        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
     else if (e.target.className === 'number-btn' && e.target.id !== 'clear-btn' && numberA !== null) {
         inputSelection.push(e.target.value);
         calcScreen.innerText = inputSelection.join('');
         numberB = Number(inputSelection.join(''));  
+        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
     else if (e.target.className === 'operator-btn' && e.target.id !== 'enter-btn' && numberA !== null && numberB !== null && activeOperator !== null) {
         inputSelection = [];
-        calcScreen.innerText = e.target.value;
         numberA = operate(numberA,activeOperator,numberB);
         numberB = Number(inputSelection.join(''));
         activeOperator = e.target.value;
+        calcScreen.innerText = numberA
+        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+    }
+    else if (e.target.id === "clear-btn" && numberA === null) {
+        inputSelection.pop();
+        calcScreen.innerText = Number(inputSelection.join('')); 
+        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+    } 
+    else if (e.target.id === "clear-btn" && numberA !== null) {
+        calcScreen.innerText = numberA;
+        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
     else if (e.target.id === 'enter-btn' && numberA === null && numberB === null) {
-        console.log(numberA);
-        console.log(numberB);
-        console.log(activeOperator);
         if (inputSelection.length === 0) inputSelection.push(0);
-
-        calcScreen.innerText = inputSelection;
+        calcScreen.innerText = Number(inputSelection.join(''));
+        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
     else if (e.target.id === 'enter-btn') {
         numberA = operate(numberA,activeOperator,numberB);
         calcScreen.innerText = numberA;
-        inputSelection = [];
-        numberB = 0;     
+        inputSelection = []; 
+        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
     else if (e.target.id === "ac-btn") {
         inputSelection = [];
@@ -85,7 +90,19 @@ calcBtns.forEach(button => {
         numberB = null;
         activeOperator = null;
         calcScreen.innerText = inputSelection;
+        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     } 
+    else if (e.target.id === "polarity-btn" && numberA === null) {
+        inputSelection[0] = inputSelection[0] * -1;
+        calcScreen.innerText = inputSelection.join('');
+        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+    } 
+    else if (e.target.id === "polarity-btn" && numberA !== null) {
+        numberA = numberA * -1;
+        calcScreen.innerText = numberA;
+        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+    } 
+   
     })
 })
 
