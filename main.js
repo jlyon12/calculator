@@ -29,7 +29,7 @@ const operate = (numA,operator,numB) => {
     else if (operator === '*') {
         return multiply(numA,numB);
     }
-    else if (operator === '/') {
+    else if (operator === '÷') {
         return divide(numA,numB);
     }
 }
