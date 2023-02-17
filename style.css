@@ -137,6 +137,9 @@ footer  a:hover{
 }
 
 button {
+    display:flex;
+    align-items: center;
+    justify-content: center;
     font-weight: var(--fw-700);
     font-size: var(--fs-400);
     border-style: none;
@@ -144,6 +147,7 @@ button {
     border: 5px solid var(--clr-accent-200);
     color: var(--clr-dark);
     border-radius: 8px;
+    
 }
 
 
@@ -155,23 +159,26 @@ button:focus {
     background-color: var(--clr-neutral);
 }
 
-.special-btn {
+
+
+.special-btn,
+.operator-btn {
     background-color: var(--clr-accent-200);
     border: 5px solid var(--clr-light);
     color:var(--clr-dark)
     
 }
-.special-btn:hover {
+.special-btn:hover,
+.operator-btn:hover {
     background-color: var(--clr-dark);
     border: 5px solid var(--clr-light);
     color: var(--clr-light)
     
 }
-.special-btn:focus {
+.special-btn:focus,
+.operator-btn:focus {
     background-color: var(--clr-neutral);
     color: var(--clr-light);
-    
-    
 }
 
 #enter-btn {
