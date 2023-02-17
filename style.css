@@ -31,6 +31,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 body {
@@ -55,6 +56,10 @@ body {
 }
 
 footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
     background-color: var(--clr-accent-200);
     color:var(--clr-light);
     width:100%;
@@ -73,6 +78,17 @@ footer  a:hover{
     
 }
 
+.git-img-wrap {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#git-img-logo {
+    width:25px;
+    height:100%;
+}
+
 #calculator-container {
     display:flex;
     flex-direction: column;
@@ -88,8 +104,8 @@ footer  a:hover{
 @media screen and (max-width:500px) {
 
     #calculator-container {
-        width:325px;
-        height:500px;
+        width:350px;
+        height:530px;
     }
 }
 
@@ -102,9 +118,13 @@ footer  a:hover{
     border: 5px solid var(--clr-accent-200);
     border-radius: 8px;
     padding-right:2%;
+    padding-left:2%;
     font-size: var(--fs-400);
     background-color: var(--clr-light);
     color:var(--clr-dark);
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-y: hidden;
     
 }
 

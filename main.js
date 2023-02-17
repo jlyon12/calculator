@@ -37,70 +37,70 @@ const operate = (numA,operator,numB) => {
 
 calcBtns.forEach(button => {
     button.addEventListener('click', (e) => {
-        
+    
     if (e.target.className === 'number-btn' && e.target.id !== 'clear-btn' && numberA === null) {
         inputSelection.push(e.target.value);
-        calcScreen.innerText = inputSelection.join('');
-        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+        calcScreen.textContent = inputSelection.join('');
+        (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }  
     else if (e.target.className === 'operator-btn' && e.target.id !== 'enter-btn' && activeOperator === null) {
         inputSelection.push(e.target.value);
         activeOperator = inputSelection.pop();
         numberA = Number(inputSelection.splice(0,inputSelection.length).join(''));
-        calcScreen.innerText = numberA;
-        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+        calcScreen.textContent = numberA;
+        (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
     else if (e.target.className === 'number-btn' && e.target.id !== 'clear-btn' && numberA !== null) {
         inputSelection.push(e.target.value);
-        calcScreen.innerText = inputSelection.join('');
+        calcScreen.textContent = inputSelection.join('');
         numberB = Number(inputSelection.join(''));  
-        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+        (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
     else if (e.target.className === 'operator-btn' && e.target.id !== 'enter-btn' && numberA !== null && numberB !== null && activeOperator !== null) {
         inputSelection = [];
         numberA = operate(numberA,activeOperator,numberB);
         numberB = Number(inputSelection.join(''));
         activeOperator = e.target.value;
-        calcScreen.innerText = numberA
-        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+        calcScreen.textContent = numberA
+        (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
     else if (e.target.id === "clear-btn" && numberA === null) {
         inputSelection.pop();
-        calcScreen.innerText = Number(inputSelection.join('')); 
-        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+        calcScreen.textContent = Number(inputSelection.join('')); 
+        (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     } 
     else if (e.target.id === "clear-btn" && numberA !== null) {
-        calcScreen.innerText = numberA;
-        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+        calcScreen.textContent = numberA;
+        (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
     else if (e.target.id === 'enter-btn' && numberA === null && numberB === null) {
         if (inputSelection.length === 0) inputSelection.push(0);
-        calcScreen.innerText = Number(inputSelection.join(''));
-        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+        calcScreen.textContent = Number(inputSelection.join(''));
+        (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
     else if (e.target.id === 'enter-btn') {
         numberA = operate(numberA,activeOperator,numberB);
-        calcScreen.innerText = numberA;
+        calcScreen.textContent = numberA;
         inputSelection = []; 
-        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+        (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
     else if (e.target.id === "ac-btn") {
         inputSelection = [];
         numberA = null;
         numberB = null;
         activeOperator = null;
-        calcScreen.innerText = inputSelection;
-        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+        calcScreen.textContent = inputSelection;
+        (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     } 
     else if (e.target.id === "polarity-btn" && numberA === null) {
         inputSelection[0] = inputSelection[0] * -1;
-        calcScreen.innerText = inputSelection.join('');
-        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+        calcScreen.textContent = inputSelection.join('');
+        (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     } 
     else if (e.target.id === "polarity-btn" && numberA !== null) {
         numberA = numberA * -1;
-        calcScreen.innerText = numberA;
-        (calcScreen.innerText.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
+        calcScreen.textContent = numberA;
+        (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     } 
    
     })
