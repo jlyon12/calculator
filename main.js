@@ -37,8 +37,9 @@ const operate = (numA,operator,numB) => {
 
 calcBtns.forEach(button => {
     button.addEventListener('click', (e) => {
-    
-    if (e.target.className === 'number-btn' && e.target.id !== 'clear-btn' && numberA === null) {
+    console.log(e)
+    console.log(inputSelection);
+    if (e.target.className.includes('number-btn') && e.target.id !== 'clear-btn' && numberA === null) {
         inputSelection.push(e.target.value);
         calcScreen.textContent = inputSelection.join('');
         (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
@@ -50,7 +51,7 @@ calcBtns.forEach(button => {
         calcScreen.textContent = numberA;
         (calcScreen.textContent.includes('.')) ? decimalBtn.disabled = true : decimalBtn.disabled = false ;
     }
-    else if (e.target.className === 'number-btn' && e.target.id !== 'clear-btn' && numberA !== null) {
+    else if (e.target.className.includes('number-btn') && e.target.id !== 'clear-btn' && numberA !== null) {
         inputSelection.push(e.target.value);
         calcScreen.textContent = inputSelection.join('');
         numberB = Number(inputSelection.join(''));  
