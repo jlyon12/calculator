@@ -118,18 +118,19 @@ calcBtns.forEach((button) => {
 			calcScreen.textContent.includes(".")
 				? (decimalBtn.disabled = true)
 				: (decimalBtn.disabled = false);
-		} else if (e.target.id === "polarity-btn" && numberA === null) {
-			inputSelection[0] = inputSelection[0] * -1;
-			calcScreen.textContent = inputSelection.join("");
-			calcScreen.textContent.includes(".")
-				? (decimalBtn.disabled = true)
-				: (decimalBtn.disabled = false);
-		} else if (e.target.id === "polarity-btn" && numberA !== null) {
-			numberA = numberA * -1;
-			calcScreen.textContent = numberA;
-			calcScreen.textContent.includes(".")
-				? (decimalBtn.disabled = true)
-				: (decimalBtn.disabled = false);
 		}
+		// else if (e.target.id === "polarity-btn" && numberA === null) {
+		// 	inputSelection[0] = inputSelection[0] * -1;
+		// 	calcScreen.textContent = inputSelection.join("");
+		// 	calcScreen.textContent.includes(".")
+		// 		? (decimalBtn.disabled = true)
+		// 		: (decimalBtn.disabled = false);
+		// } else if (e.target.id === "polarity-btn" && numberA !== null) {
+		// 	numberA = numberA * -1;
+		// 	calcScreen.textContent = numberA;
+		// 	calcScreen.textContent.includes(".")
+		// 		? (decimalBtn.disabled = true)
+		// 		: (decimalBtn.disabled = false);
+		// }
 	});
 });
