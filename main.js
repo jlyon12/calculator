@@ -42,7 +42,7 @@ calcBtns.forEach((button) => {
 				? (decimalBtn.disabled = true)
 				: (decimalBtn.disabled = false);
 		} else if (
-			e.target.className === "operator-btn" &&
+			e.target.className.includes("operator-btn") &&
 			e.target.id !== "enter-btn" &&
 			activeOperator === null
 		) {
@@ -67,7 +67,7 @@ calcBtns.forEach((button) => {
 				? (decimalBtn.disabled = true)
 				: (decimalBtn.disabled = false);
 		} else if (
-			e.target.className === "operator-btn" &&
+			e.target.className.includes("operator-btn") &&
 			e.target.id !== "enter-btn" &&
 			numberA !== null &&
 			numberB !== null &&
