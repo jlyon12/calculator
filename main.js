@@ -80,10 +80,14 @@ calcBtns.forEach((button) => {
 		) {
 			inputSelection = [];
 			numberA = operate(numberA, activeOperator, numberB);
-			numberB = Number(inputSelection.join(""));
+			if (inputSelection.length > 0) {
+				numberB = Number(inputSelection.join(""));
+			} else if (inputSelection.length === 0) {
+				numberB = numberA;
+			}
 			activeOperator = btnValue;
 			screenPrevious.textContent = `${numberA} ${activeOperator}`;
-			screenCurrent.textContent = null;
+			screenCurrent.textContent = numberB;
 			disableDecimal();
 		} else if (btnId === "clear-btn" && numberA === null) {
 			inputSelection.pop();
@@ -92,6 +96,7 @@ calcBtns.forEach((button) => {
 		} else if (btnId === "clear-btn" && numberA !== null) {
 			inputSelection.pop();
 			numberB = Number(inputSelection.join(""));
+			screenPrevious.textContent = `${numberA} ${activeOperator}`;
 			screenCurrent.textContent = inputSelection.join("");
 			disableDecimal();
 		} else if (btnId === "enter-btn" && numberA === null && numberB === null) {
@@ -99,11 +104,15 @@ calcBtns.forEach((button) => {
 			screenPrevious.textContent = Number(inputSelection.join(""));
 			disableDecimal();
 		} else if (btnId === "enter-btn") {
+			if (numberB === null) {
+				numberB = numberA;
+			}
 			result = operate(numberA, activeOperator, numberB);
 			screenPrevious.innerText =
 				` ${numberA} ${activeOperator} ${numberB}` + " =";
 			screenCurrent.textContent = result;
 			inputSelection = [];
+			numberA = result;
 			disableDecimal();
 		} else if (btnId === "ac-btn") {
 			inputSelection = [];
@@ -114,18 +123,7 @@ calcBtns.forEach((button) => {
 			screenCurrent.textContent = null;
 			disableDecimal();
 		}
-		// else if (btnId === "polarity-btn" && numberA === null) {
-		// 	inputSelection[0] = inputSelection[0] * -1;
-		// 	calcScreen.textContent = inputSelection.join("");
-		// 	screenCurrent.textContent.includes(".")
-		// 		? (decimalBtn.disabled = true)
-		// 		: (decimalBtn.disabled = false);
-		// } else if (btnId === "polarity-btn" && numberA !== null) {
-		// 	numberA = numberA * -1;
-		// 	calcScreen.textContent = numberA;
-		// 	screenCurrent.textContent.includes(".")
-		// 		? (decimalBtn.disabled = true)
-		// 		: (decimalBtn.disabled = false);
-		// }
+		console.log(numberA, numberB);
+		console.log(inputSelection);
 	});
 });
