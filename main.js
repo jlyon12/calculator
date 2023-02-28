@@ -2,6 +2,8 @@ const screenPrevious = document.getElementById("previous-output");
 const screenCurrent = document.getElementById("current-output");
 const calcBtns = document.querySelectorAll("button");
 const decimalBtn = document.getElementById("decimal-btn");
+const acBtn = document.getElementById("ac-btn");
+
 let inputSelection = [];
 let numberA = null;
 let numberB = null;
@@ -40,7 +42,18 @@ calcBtns.forEach((button) => {
 				? (decimalBtn.disabled = true)
 				: (decimalBtn.disabled = false);
 		}
-
+		function blinkAcBtn() {
+			if (screenCurrent.textContent.includes("LOL, no.")) {
+				calcBtns.forEach((button) => {
+					button.disabled = true;
+				});
+				acBtn.disabled = false;
+				acBtn.classList.add("blink");
+				if (screenPrevious.textContent.includes("LOL, no.")) {
+					screenPrevious.textContent = "ERROR";
+				}
+			}
+		}
 		if (
 			btnClass.includes("number-btn") &&
 			btnId !== "clear-btn" &&
@@ -62,6 +75,7 @@ calcBtns.forEach((button) => {
 			screenPrevious.textContent = `${numberA} ${activeOperator}`;
 			screenCurrent.textContent = null;
 			disableDecimal();
+			blinkAcBtn();
 		} else if (
 			btnClass.includes("number-btn") &&
 			btnId !== "clear-btn" &&
@@ -89,6 +103,7 @@ calcBtns.forEach((button) => {
 			screenPrevious.textContent = `${numberA} ${activeOperator}`;
 			screenCurrent.textContent = numberB;
 			disableDecimal();
+			blinkAcBtn();
 		} else if (btnId === "clear-btn" && numberA === null) {
 			inputSelection.pop();
 			screenCurrent.textContent = Number(inputSelection.join(""));
@@ -114,7 +129,12 @@ calcBtns.forEach((button) => {
 			inputSelection = [];
 			numberA = result;
 			disableDecimal();
+			blinkAcBtn();
 		} else if (btnId === "ac-btn") {
+			acBtn.classList.remove("blink");
+			calcBtns.forEach((button) => {
+				button.disabled = false;
+			});
 			inputSelection = [];
 			numberA = null;
 			numberB = null;

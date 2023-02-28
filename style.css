@@ -33,6 +33,9 @@ body {
 	font-family: var(--ff-primary);
 }
 
+.disable-dbl-tap-zoom {
+	touch-action: manipulation;
+}
 #page-wrapper {
 	display: flex;
 	flex-direction: column;
@@ -111,6 +114,15 @@ body {
 	grid-column: 4/5;
 }
 
+.blink {
+	animation: blink 1.5s linear infinite;
+}
+
+@keyframes blink {
+	50% {
+		opacity: 0;
+	}
+}
 button {
 	display: flex;
 	align-items: center;
@@ -132,7 +144,7 @@ button:hover {
 .special-btn,
 .operator-btn {
 	background-color: var(--clr-secondary);
-	border: 1px solid var(--clr-neutral);
+	border: 1px solid transparent;
 	color: var(--clr-primary);
 }
 .special-btn:hover,
