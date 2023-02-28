@@ -57,7 +57,7 @@ body {
 	flex-direction: column;
 	gap: 4%;
 	width: 450px;
-	height: 590px;
+	height: 600px;
 	padding: 2%;
 	border: 10px solid var(--clr-secondary);
 	border-radius: 8px;
@@ -73,18 +73,17 @@ body {
 #output {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: end;
 	width: 100%;
 	height: 20%;
 	border: 2px solid var(--clr-secondary);
 	border-radius: 8px;
-	padding-right: 2%;
-	padding-left: 2%;
+	padding: 2%;
 	background-color: var(--clr-dark);
 	word-wrap: break-word;
 	word-break: break-all;
-	overflow-y: hidden;
+	overflow-y: auto;
 }
 
 #previous-output {

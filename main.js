@@ -52,6 +52,16 @@ calcBtns.forEach((button) => {
 				if (screenPrevious.textContent.includes("LOL, no.")) {
 					screenPrevious.textContent = "ERROR";
 				}
+			} else if (screenCurrent.textContent.includes("Infinity")) {
+				screenCurrent.textContent = "Oops - Infinity?";
+				calcBtns.forEach((button) => {
+					button.disabled = true;
+				});
+				acBtn.disabled = false;
+				acBtn.classList.add("blink");
+				if (screenPrevious.textContent.includes("Infinity")) {
+					screenPrevious.textContent = "ERROR";
+				}
 			}
 		}
 		if (
