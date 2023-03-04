@@ -107,7 +107,7 @@ calcBtns.forEach((button) => {
 			if (inputSelection.length > 0) {
 				numberB = Number(inputSelection.join(""));
 			} else if (inputSelection.length === 0) {
-				numberB = numberA;
+				numberB = null;
 			}
 			activeOperator = btnValue;
 			screenPrevious.textContent = `${numberA} ${activeOperator}`;
